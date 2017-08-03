@@ -1,0 +1,17 @@
+# Target labels
+ Main
+ opencv_cudabgsegm
+ AccuracyTest
+# Source files and their labels
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudabgsegm/test/test_main.cpp
+ Main
+ opencv_cudabgsegm
+ AccuracyTest
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudabgsegm/test/test_bgsegm.cpp
+ Main
+ opencv_cudabgsegm
+ AccuracyTest
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudabgsegm/test/test_precomp.hpp
+ Main
+ opencv_cudabgsegm
+ AccuracyTest

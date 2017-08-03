@@ -1,0 +1,42 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudaobjdetect/perf/perf_main.cpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_cudaobjdetect",
+				"PerfTest"
+			]
+		},
+		{
+			"file" : "/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudaobjdetect/perf/perf_objdetect.cpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_cudaobjdetect",
+				"PerfTest"
+			]
+		},
+		{
+			"file" : "/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudaobjdetect/perf/perf_precomp.hpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_cudaobjdetect",
+				"PerfTest"
+			]
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"Main",
+			"opencv_cudaobjdetect",
+			"PerfTest"
+		],
+		"name" : "opencv_perf_cudaobjdetect"
+	}
+}

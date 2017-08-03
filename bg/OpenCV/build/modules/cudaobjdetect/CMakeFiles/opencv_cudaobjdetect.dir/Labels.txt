@@ -1,0 +1,37 @@
+# Target labels
+ Main
+ opencv_cudaobjdetect
+ Module
+# Source files and their labels
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudaobjdetect/include/opencv2/cudaobjdetect.hpp
+ Main
+ opencv_cudaobjdetect
+ Module
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudaobjdetect/src/cascadeclassifier.cpp
+ Main
+ opencv_cudaobjdetect
+ Module
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudaobjdetect/src/hog.cpp
+ Main
+ opencv_cudaobjdetect
+ Module
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudaobjdetect/src/cuda/lbp.hpp
+ Main
+ opencv_cudaobjdetect
+ Module
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudaobjdetect/src/precomp.hpp
+ Main
+ opencv_cudaobjdetect
+ Module
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudaobjdetect/src/cuda/lbp.cu
+ Main
+ opencv_cudaobjdetect
+ Module
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudaobjdetect/src/cuda/hog.cu
+ Main
+ opencv_cudaobjdetect
+ Module
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/build/cvconfig.h
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/build/opencv2/opencv_modules.hpp
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/build/modules/cudaobjdetect/CMakeFiles/cuda_compile.dir/src/cuda/cuda_compile_generated_lbp.cu.o
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/build/modules/cudaobjdetect/CMakeFiles/cuda_compile.dir/src/cuda/cuda_compile_generated_hog.cu.o

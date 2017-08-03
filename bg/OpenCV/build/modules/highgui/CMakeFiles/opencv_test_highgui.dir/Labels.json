@@ -1,0 +1,45 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/highgui/test/test_main.cpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_highgui",
+				"AccuracyTest"
+			]
+		},
+		{
+			"file" : "/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/highgui/test/test_gui.cpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_highgui",
+				"AccuracyTest"
+			]
+		},
+		{
+			"file" : "/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/highgui/test/test_precomp.hpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_highgui",
+				"AccuracyTest"
+			]
+		},
+		{
+			"file" : "/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/build/modules/highgui/opencv_test_highgui_automoc.cpp"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"Main",
+			"opencv_highgui",
+			"AccuracyTest"
+		],
+		"name" : "opencv_test_highgui"
+	}
+}

@@ -1,0 +1,42 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudaoptflow/perf/perf_optflow.cpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_cudaoptflow",
+				"PerfTest"
+			]
+		},
+		{
+			"file" : "/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudaoptflow/perf/perf_main.cpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_cudaoptflow",
+				"PerfTest"
+			]
+		},
+		{
+			"file" : "/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudaoptflow/perf/perf_precomp.hpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_cudaoptflow",
+				"PerfTest"
+			]
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"Main",
+			"opencv_cudaoptflow",
+			"PerfTest"
+		],
+		"name" : "opencv_perf_cudaoptflow"
+	}
+}

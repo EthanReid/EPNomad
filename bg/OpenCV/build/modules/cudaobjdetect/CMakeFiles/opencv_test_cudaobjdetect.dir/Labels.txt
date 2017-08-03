@@ -1,0 +1,17 @@
+# Target labels
+ Main
+ opencv_cudaobjdetect
+ AccuracyTest
+# Source files and their labels
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudaobjdetect/test/test_objdetect.cpp
+ Main
+ opencv_cudaobjdetect
+ AccuracyTest
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudaobjdetect/test/test_main.cpp
+ Main
+ opencv_cudaobjdetect
+ AccuracyTest
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudaobjdetect/test/test_precomp.hpp
+ Main
+ opencv_cudaobjdetect
+ AccuracyTest

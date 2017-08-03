@@ -1,0 +1,17 @@
+# Target labels
+ Main
+ opencv_cudabgsegm
+ PerfTest
+# Source files and their labels
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudabgsegm/perf/perf_bgsegm.cpp
+ Main
+ opencv_cudabgsegm
+ PerfTest
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudabgsegm/perf/perf_main.cpp
+ Main
+ opencv_cudabgsegm
+ PerfTest
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudabgsegm/perf/perf_precomp.hpp
+ Main
+ opencv_cudabgsegm
+ PerfTest

@@ -1,0 +1,17 @@
+# Target labels
+ Main
+ opencv_cudastereo
+ AccuracyTest
+# Source files and their labels
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudastereo/test/test_stereo.cpp
+ Main
+ opencv_cudastereo
+ AccuracyTest
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudastereo/test/test_main.cpp
+ Main
+ opencv_cudastereo
+ AccuracyTest
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudastereo/test/test_precomp.hpp
+ Main
+ opencv_cudastereo
+ AccuracyTest

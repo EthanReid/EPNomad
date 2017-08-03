@@ -1,0 +1,68 @@
+# Target labels
+ Main
+ opencv_cudastereo
+ Module
+# Source files and their labels
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudastereo/include/opencv2/cudastereo.hpp
+ Main
+ opencv_cudastereo
+ Module
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudastereo/src/disparity_bilateral_filter.cpp
+ Main
+ opencv_cudastereo
+ Module
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudastereo/src/stereocsbp.cpp
+ Main
+ opencv_cudastereo
+ Module
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudastereo/src/util.cpp
+ Main
+ opencv_cudastereo
+ Module
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudastereo/src/stereobm.cpp
+ Main
+ opencv_cudastereo
+ Module
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudastereo/src/stereobp.cpp
+ Main
+ opencv_cudastereo
+ Module
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudastereo/src/cuda/disparity_bilateral_filter.hpp
+ Main
+ opencv_cudastereo
+ Module
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudastereo/src/cuda/stereocsbp.hpp
+ Main
+ opencv_cudastereo
+ Module
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudastereo/src/precomp.hpp
+ Main
+ opencv_cudastereo
+ Module
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudastereo/src/cuda/disparity_bilateral_filter.cu
+ Main
+ opencv_cudastereo
+ Module
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudastereo/src/cuda/stereobm.cu
+ Main
+ opencv_cudastereo
+ Module
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudastereo/src/cuda/stereocsbp.cu
+ Main
+ opencv_cudastereo
+ Module
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudastereo/src/cuda/util.cu
+ Main
+ opencv_cudastereo
+ Module
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudastereo/src/cuda/stereobp.cu
+ Main
+ opencv_cudastereo
+ Module
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/build/cvconfig.h
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/build/opencv2/opencv_modules.hpp
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/build/modules/cudastereo/CMakeFiles/cuda_compile.dir/src/cuda/cuda_compile_generated_disparity_bilateral_filter.cu.o
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/build/modules/cudastereo/CMakeFiles/cuda_compile.dir/src/cuda/cuda_compile_generated_stereobm.cu.o
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/build/modules/cudastereo/CMakeFiles/cuda_compile.dir/src/cuda/cuda_compile_generated_stereocsbp.cu.o
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/build/modules/cudastereo/CMakeFiles/cuda_compile.dir/src/cuda/cuda_compile_generated_util.cu.o
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/build/modules/cudastereo/CMakeFiles/cuda_compile.dir/src/cuda/cuda_compile_generated_stereobp.cu.o

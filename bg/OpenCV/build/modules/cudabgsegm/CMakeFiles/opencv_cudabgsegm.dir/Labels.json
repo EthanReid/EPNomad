@@ -1,0 +1,81 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudabgsegm/include/opencv2/cudabgsegm.hpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_cudabgsegm",
+				"Module"
+			]
+		},
+		{
+			"file" : "/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudabgsegm/src/mog.cpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_cudabgsegm",
+				"Module"
+			]
+		},
+		{
+			"file" : "/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudabgsegm/src/mog2.cpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_cudabgsegm",
+				"Module"
+			]
+		},
+		{
+			"file" : "/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudabgsegm/src/precomp.hpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_cudabgsegm",
+				"Module"
+			]
+		},
+		{
+			"file" : "/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudabgsegm/src/cuda/mog.cu",
+			"labels" : 
+			[
+				"Main",
+				"opencv_cudabgsegm",
+				"Module"
+			]
+		},
+		{
+			"file" : "/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudabgsegm/src/cuda/mog2.cu",
+			"labels" : 
+			[
+				"Main",
+				"opencv_cudabgsegm",
+				"Module"
+			]
+		},
+		{
+			"file" : "/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/build/cvconfig.h"
+		},
+		{
+			"file" : "/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/build/opencv2/opencv_modules.hpp"
+		},
+		{
+			"file" : "/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/build/modules/cudabgsegm/CMakeFiles/cuda_compile.dir/src/cuda/cuda_compile_generated_mog.cu.o"
+		},
+		{
+			"file" : "/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/build/modules/cudabgsegm/CMakeFiles/cuda_compile.dir/src/cuda/cuda_compile_generated_mog2.cu.o"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"Main",
+			"opencv_cudabgsegm",
+			"Module"
+		],
+		"name" : "opencv_cudabgsegm"
+	}
+}

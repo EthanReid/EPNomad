@@ -1,0 +1,25 @@
+# Target labels
+ Main
+ opencv_stitching
+ AccuracyTest
+# Source files and their labels
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/stitching/test/test_main.cpp
+ Main
+ opencv_stitching
+ AccuracyTest
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/stitching/test/test_blenders.cpp
+ Main
+ opencv_stitching
+ AccuracyTest
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/stitching/test/test_matchers.cpp
+ Main
+ opencv_stitching
+ AccuracyTest
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/stitching/test/ocl/test_warpers.cpp
+ Main
+ opencv_stitching
+ AccuracyTest
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/stitching/test/test_precomp.hpp
+ Main
+ opencv_stitching
+ AccuracyTest

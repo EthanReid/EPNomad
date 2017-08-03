@@ -1,0 +1,33 @@
+# Target labels
+ Main
+ opencv_cudabgsegm
+ Module
+# Source files and their labels
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudabgsegm/include/opencv2/cudabgsegm.hpp
+ Main
+ opencv_cudabgsegm
+ Module
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudabgsegm/src/mog.cpp
+ Main
+ opencv_cudabgsegm
+ Module
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudabgsegm/src/mog2.cpp
+ Main
+ opencv_cudabgsegm
+ Module
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudabgsegm/src/precomp.hpp
+ Main
+ opencv_cudabgsegm
+ Module
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudabgsegm/src/cuda/mog.cu
+ Main
+ opencv_cudabgsegm
+ Module
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudabgsegm/src/cuda/mog2.cu
+ Main
+ opencv_cudabgsegm
+ Module
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/build/cvconfig.h
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/build/opencv2/opencv_modules.hpp
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/build/modules/cudabgsegm/CMakeFiles/cuda_compile.dir/src/cuda/cuda_compile_generated_mog.cu.o
+/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/build/modules/cudabgsegm/CMakeFiles/cuda_compile.dir/src/cuda/cuda_compile_generated_mog2.cu.o

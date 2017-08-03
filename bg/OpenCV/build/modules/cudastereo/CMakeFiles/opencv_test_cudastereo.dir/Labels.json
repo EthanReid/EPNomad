@@ -1,0 +1,42 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudastereo/test/test_stereo.cpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_cudastereo",
+				"AccuracyTest"
+			]
+		},
+		{
+			"file" : "/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudastereo/test/test_main.cpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_cudastereo",
+				"AccuracyTest"
+			]
+		},
+		{
+			"file" : "/home/ubuntu/nomad_server_but_refactored/bg/OpenCV/modules/cudastereo/test/test_precomp.hpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_cudastereo",
+				"AccuracyTest"
+			]
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"Main",
+			"opencv_cudastereo",
+			"AccuracyTest"
+		],
+		"name" : "opencv_test_cudastereo"
+	}
+}
