@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<% include ../partials/dashboard/head.ejs %>
+	<title>Nomad | Dashboard</title>
+</head>
+<body>
+	<% include ../partials/dashboard/header.ejs %>
+	<!-- PUT A BUNCH OF MOTHERFUCKING GRAPHS HERE SO IT LOOKS TECHNICAL AND SHIT -->
+	<main>
+		<div class="container">
+			<h4>Analytics</h4>
+			<canvas id="myChart"></canvas>
+		</div>
+	</main>
+
+	<% include ../partials/dashboard/new_project.ejs %>
+
+	<% include ../partials/dashboard/js.ejs %>
+	<script>
+		<% if(message) { %>
+		Materialize.toast("<%= message %>", 4000)
+		<% } %>
+
+		var ctx = document.getElementById("myChart").getContext("2d");
+		var myLineChart = new Chart(ctx, {
+			type: 'line',
+			data: {
+				datasets: [{
+					label: 'Uses',
+					fill: false,
+					borderColor: "Red",
+					data: [{
+						x: -10,
+						y: 0
+					}, {
+						x: 0,
+						y: 10
+					}, {
+						x: 10,
+						y: 5
+					}]
+				}]
+			},
+		});
+	</script>
+</body>
+</html>

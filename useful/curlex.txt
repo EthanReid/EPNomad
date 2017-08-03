@@ -1,0 +1,3 @@
+curl -v -H "Content-Type: application/json" -X POST localhost:3000/oauth/token -u 5871f1cd0ba7b24a8b757047:d5d24343456ee38fafad57aa5b5a42c44ad3af74 -d '{"grant_type": "client_credentials"}'
+
+curl -X GET localhost:3000/restricted -v -H "Authorization: Bearer 30v1BG3nxenaeAHTZBHPjO7JnLeVrTBdUQNvQL8WLn5RpaMjYH1QRbR0tR7YCoANptoYPoK8GcyWvsRn1jYjDQfMLemZCiDhznjBboBzcAY0RFtAys36qJvG6xY9j4fVSEQOAu9JprZn78kpiung8HmLnXRj2oFqzEPE7IHZOLAWNnfUacgXXiQUBGkLEGzGxFiSUyNWD5NpLiAS3YCyTzCNpchvxE85bPiCpXfSbMDslxYqnn0Gc9WrLCuaM1nr"

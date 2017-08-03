@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Nomad | Sign Up</title>
+	<% include ../partials/head.ejs %>
+</head>
+<body>
+	<% include ../partials/header.ejs %>
+
+		<!-- views/signup.ejs -->
+	<div class="container">
+
+		<div class="col-sm-6 col-sm-offset-3">
+
+			<h1 style="color: #528FE0;">Sign up</h1>
+
+			<!-- show any messages that come back with authentication -->
+			<% if (message.length > 0) { %>
+				<div class="alert alert-danger"><%= message %></div>
+			<% } %>
+
+			<!-- SIGNUP FORM -->
+			<form style="color: #528FE0;" action="/signup" method="post">
+				<div class="form-group">
+					<label>Name</label>
+					<input type="text" class="form-control" name="name">
+				</div>
+				<div class="form-group">
+					<label>Email</label>
+					<input type="text" class="form-control" name="email">
+				</div>
+				<div class="form-group">
+					<label>Password</label>
+					<input id="password" type="password" class="form-control" name="password">
+					<meter max="4" id="password-strength-meter"></meter>
+					<p id="password-strength-text"></p>
+				</div>
+
+				<button type="submit" class="btn btn-lg">Sign up</button>
+			</form>
+
+			<hr>
+
+			<p>Already have an account? <a href="/signin">Sign in</a></p>
+
+		</div>
+
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.2.0/zxcvbn.js"></script>
+	<script>
+		var strength = {
+			0: "Worst",
+			1: "Bad",
+			2: "Weak",
+			3: "Good",
+			4: "Strong"
+		}
+		var password = document.getElementById('password');
+		var meter = document.getElementById('password-strength-meter');
+		var text = document.getElementById('password-strength-text');
+
+		password.addEventListener('input', function() {
+			var val = password.value;
+			var result = zxcvbn(val);
+
+			// Update the password strength meter
+		 	meter.value = result.score;
+
+		  	// Update the text indicator
+		  	if (val !== "") {
+			    text.innerHTML = "Strength: " + strength[result.score]; 
+		    } else {
+			    text.innerHTML = "";
+			}
+		});
+	</script>
+</body>

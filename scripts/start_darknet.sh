@@ -1,0 +1,1 @@
+sudo nohup ../darknet detector test ../darknet_user_files/projects/58d5fa93aed3e8070c59c68e/cfg/yolo.data ../darknet_user_files/projects/58d5fa93aed3e8070c59c68e/cfg/yolo.cfg ../darknet_user_files/projects/58d5fa93aed3e8070c59c68e/weights/yolo_final.weights -gpus 0,1,2,3 &

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Try</title>
+</head>
+<body>
+	<h1>POST IMAGE</h1>
+	<form method="POST" action="/data_fast_norm" enctype="multipart/form-data">
+		<input type="text" name="base64">
+		<input type="submit">
+	</form>
+
+	<h1>POST BASE64 TO SAVE IMAGE</h1>
+	<form method="POST" action="/b64">
+		<input type="text" name="base64">
+		<input type="submit">
+	</form>
+
+	<h1>POST BASE64 TO RECOGNIZE IMAGE</h1>
+	<form method="POST" action="/data_fast_b64">
+		<input type="text" name="base64">
+		<input type="submit">
+	</form>
+</body>
+</html>
+<!--sudo ./dnet detector test darknet_user_files/projects/58c4125c54c84005a17ca12b/cfg/yolo.data darknet_user_files/projects/58c4125c54c84005a17ca12b/cfg/yolo.cfg darknet_user_files/projects/58c4125c54c84005a17ca12b/weights/yolo_final.weights -gpus 0,1,2,3-->

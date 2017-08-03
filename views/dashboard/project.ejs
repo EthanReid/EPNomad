@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<% include ../partials/dashboard/head.ejs %>
+	<title>Nomad | <%= project.name %></title>
+</head>
+<body>
+	<% include ../partials/dashboard/header.ejs %>
+	<main>
+		<div class="container">
+			<h4><%= project.name %></h4>
+			<p>Remember, more images means better recognition</p>
+			<a class="tr waves-effect waves-light teal btn" href="#new_model" style="margin-bottom: 25px;"><i class="material-icons left">add</i>New Model</a>
+			<a class="waves-effect waves-light teal btn" href="#auth" style="margin-bottom: 25px;"><i class="material-icons left">vpn_key</i>Get API Token</a>
+			<div id="project_container">
+				<% if(project.models != null){ %>
+					<% for(var i=0;i<project.models.length;i++){ %>
+						<p id="<%= project.models[i]._id %>"><%= project.models[i].name%><i class="delete_model material-icons">delete</i></p>
+					<% } %>
+				<% } %>
+			</div>
+			<a id="train" class="tr waves-effect waves-light teal btn" href="#!"><i id="train_icon" class="material-icons left">build</i>Train</a>
+			<a class="tr waves-effect waves-light teal btn" href="#test_project_modal"><i class="material-icons left">done</i>Test</a>
+			<a class="tr waves-effect waves-light red btn" href="#delete_project_modal"><i class="material-icons left">delete</i>Delete</a>
+			<div id="train_info"></div>
+		</div>
+	</main>
+	<div id="test_project_modal" class="modal">
+		<div class="modal-content">
+			<h4>Test Project</h4>
+			<p>Upload Image</p>
+			<form id="test_form" action="/projects/<%= project._id%>/detect" method="POST" enctype="multipart/form-data" class="col s12">
+				<div class="input-field col s6">
+					<div class="file-field input-field">
+						<div class="btn">
+							<span>Image</span>
+							<input type="file" name="file" id="test_file" accept="image/*">
+						</div>
+						<div class="file-path-wrapper">
+							<input class="file-path validate" type="text">
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="modal-footer">
+			<a href="#!" id="test_project" class="modal-action waves-effect waves-green btn-flat">Test</a>
+			<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+		</div>
+	</div>
+	<div id="delete_project_modal" class="modal">
+		<div class="modal-content">
+			<h4>Delete Project</h4>
+			<p>Are you sure you want to delete your project? This action cannot be undone</p>
+			<div class="input-field col s6">
+				<input id="project_name" type="text">
+				<label for="project_name">Project Name</label>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<a href="#!" id="delete_project" class="modal-action waves-effect waves-green btn-flat">Delete</a>
+			<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+		</div>
+	</div>
+	<div id="auth" class="modal">
+		<div class="modal-content">
+			<h4>Credentials</h4>
+			<p>Client Id: <%= project._id %></p>
+			<p>Client Secret: <%= project.clientSecret %></p>
+		</div>
+		<div class="modal-footer">
+			<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
+		</div>
+	</div>
+	<div id="new_model" class="modal">
+		<div class="modal-content">
+			<h4 style="margin-bottom: 25px;">New Model</h4>
+			<form id="form_model" action="/projects/<%= project._id%>/models/add" method="POST" enctype="multipart/form-data" class="col s12">
+				<div class="row">
+					<div class="input-field col s6">
+						<input id="name" name="name" type="text">
+						<label for="name">Name</label>
+					</div>
+					<div class="input-field col s6">
+						<input id="price" type="text" name="price">
+						<label for="price">Price</label>
+					</div>
+					<div class="input-field col s6">
+						<input type="text" name="image_url">
+						<label for="image_url">Image URL</label>
+					</div>
+					<div class="input-field col s6">
+						<input type="text" name="store_url">
+						<label for="store_url">Store URL</label>
+					</div>
+				</div>
+				<div class="row">
+					<p>Zip the files not the folder</p>
+					<div class="input-field col s6">
+						<div class="file-field input-field">
+							<div class="btn">
+								<span>Zip</span>
+								<input type="file" name="file" id="file" accept="application/zip">
+							</div>
+							<div class="file-path-wrapper">
+								<input class="file-path validate" type="text">
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="modal-footer">
+			<a href="#!" id="create_model" class="modal-action waves-effect waves-green btn-flat">Create</a>
+			<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+		</div>
+	</div>
+	<% include ../partials/dashboard/new_project.ejs %>
+	<% include ../partials/dashboard/js.ejs %>
+	<script>
+		var training = false;
+		<% if(project.in_training){ %>
+			$(".tr").addClass("disabled")
+			$("#train_icon").html('<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i><span class="sr-only">Loading...</span>')
+			check_for_trained()
+			training = true
+		<% } %>
+
+		$("#delete_project").click(function(){
+			$.post("/projects/<%= project._id %>/delete", function(data){
+				window.location.replace("/")
+			})
+		})
+
+		$("#test_project").click(function(){
+			$(".modal-action").addClass("disabled")
+			$("#test_form").submit()
+		})
+
+		$('#test_form').submit(function(e){
+			e.preventDefault();
+			$.ajax({
+				url: '/projects/<%= project._id %>/detect',
+				type: 'POST',
+				data: new FormData(this),
+				processData: false,
+				contentType: false, 
+				success: function(data){
+					$("#train_info").empty()
+					$("#train_info").append(data)
+					$(".modal-action").removeClass("disabled")
+					$(".modal").modal('close')
+				}
+			});
+		})
+
+		$("#create_model").click(function(){
+			$(".modal-action").addClass("disabled")
+			$("#form_model").submit()
+		})
+
+		$('#form_model').submit(function(e){
+			console.log(this)
+			e.preventDefault();
+			$.ajax({
+				url: '/projects/<%= project._id %>/models/add',
+				type: 'POST',
+				data: new FormData(this),
+				processData: false,
+				contentType: false, 
+				success: function(data){
+					$("#project_container").empty()
+					console.log(data)
+					console.log(data.models)
+					for(var i=0;i<data.models.length;i++){
+						$("#project_container").append("<p id='" + data["models"][i]["_id"] + "'>" + data["models"][i]["name"] + "<i class='delete_model material-icons'>delete</i></p>")
+					}
+					$(".modal-action").removeClass("disabled")
+					$(".modal").modal('close')
+				}
+			});
+		})
+
+		$("#project_container").on("click", ".delete_model", function(){
+			if(!training){
+				var id = $(this).parent().attr("id")
+				$.post("/projects/<%= project._id %>/models/remove", { _id: id }, function(data){
+					$("#project_container").empty()
+					console.log(data.models)
+					for(var i=0;i<data.models.length;i++){
+						$("#project_container").append("<p id='" + data["models"][i]["_id"] + "'>" + data["models"][i]["name"] + "<i class='delete_model material-icons'>delete</i></p>")
+					}
+				})
+			}
+		})
+
+		$("#train").click(function(){
+			$.post("/projects/<%= project._id %>/train", function(data){
+				var tr = '<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i><span class="sr-only">Loading...</span>'
+				console.log(data)
+				$("#train_icon").html(tr)
+				$(".tr").addClass("disabled")
+				check_for_trained()
+				training = true
+			})
+		})
+
+		function check_for_trained(){
+			var set_interval_id = setInterval(function(){
+				$.get("/projects/<%= project._id %>/train/is_trained", function(data){
+					console.log(data)
+					if(data.trained){
+						$(".tr").removeClass("disabled")
+						$("#train_icon").html("<i class='material-icons left'>build</i>")
+						clearInterval(set_interval_id)
+						training = false
+						Materialize.toast('Finished training', 10000)
+					}
+				})
+			}, 60000)
+		}
+
+	</script>
+</body>
+</html>

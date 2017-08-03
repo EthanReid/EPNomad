@@ -1,0 +1,35 @@
+<ul id="slide-out" class="side-nav fixed">
+	<li><div class="userView">
+	  <div class="background">
+		<img src="/images/pic02.jpg">
+	  </div>
+	  <span class="white-text name"><%= user.name %></span>
+	  <span class="white-text email"><%= user.email %></span>
+	</div></li>
+	<li><a href="/dashboard"><i class="material-icons">dashboard</i>Dashboard</a></li>
+	<li><a class="modal-trigger waves-effect" href="#new_project"><i class="material-icons">add</i>New Project</a></li>
+	<li class="no-padding">
+		<ul class="collapsible collapsible-accordion">
+		  <li>
+			<a id="show_dropdown" class="waves-effect collapsible-header"><i id="dropdown" class="material-icons">keyboard_arrow_right</i>Projects</a>
+			<div class="collapsible-body">
+			  <ul>
+			  	<% if(projects.length > 0) { %>
+					<% for(var i=0;i<projects.length;i++){ %>
+						<li><a class="wave-effect" href="/projects/<%= projects[i]['_id'] %>"><%= projects[i]["name"] %></a></li>
+					<% } %>
+				<% } else { %>
+					<li><a class="subheader">No Projects</a></li>
+				<% } %>
+			  </ul>
+			</div>
+		  </li>
+		</ul>
+	</li>
+	<li><a href="/documentation"><i class="material-icons">book</i>Documentation</a></li>
+	<li><a class="waves-effect" href="/billing"><i class="material-icons">payment</i>Billing</a></li>
+	<li><a class="waves-effect" href="#!"><i class="material-icons">email</i>Notifications</a></li>
+	<li><a class="waves-effect" href="#!"><i class="material-icons">settings</i>Account Settings</a></li>
+	<li><a class="waves-effect" href="/signout"><i class="material-icons">power_settings_new</i>Sign Out</a></li>
+</ul>
+<a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
