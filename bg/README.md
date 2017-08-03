@@ -12,7 +12,7 @@ These collection of scripts crop pictures and change their backgrounds.
 
 transparent.cpp essentially changes the picture to a png as that allows for an alpha channel. After that, you can use switch.py to place the png ontop of another image.
 
-Since transparent.cpp is in C++, you must compile it before running it: `g++ $(pkg-config --cflags --libs opencv) transparent.cpp`. This will output a file called a.out which you can execute using `./a.out`
+Since transparent.cpp is in C++, you must compile it before running it: `g++ $(pkg-config --cflags --libs opencv) transparent.cpp`, that prob wont work. Use this instead `g++ transparent.cpp $(pkg-config --cflags --libs opencv)` This will output a file called a.out which you can execute using `./a.out`
 
 ### Commands
 
