@@ -1,1 +1,0 @@
-# Refactored Server### How to Run1. `npm install` # installs all the package2. `sudo nodemon app.js` # runs the app
