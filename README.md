@@ -44,7 +44,7 @@ The **API server** handles CRUD operations on a user's projects and products. It
 
 This is represented by DynamoDB and S3. A *User* can have many projects, and each project can have many products, with each product having multiple files in S3. The files are represented in both DynamoDB (as randomly generated keys of length 24) and in S3 (as the key {{userId}}/{{fileKey}}.png in the "epnomad" bucket.)
 
-```json
+```
 User {
   id: String,
     name: String,
