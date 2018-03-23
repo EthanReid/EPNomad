@@ -1,0 +1,812 @@
+{
+	"info": {
+		"_postman_id": "c6e45a36-6e8b-4b63-8d58-9772a933d31f",
+		"name": "EPNomad",
+		"description": "The REST API for EPNomad",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List projects",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "746c67cb-a097-4598-9cda-e0a522c4b142",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "069903f0-4163-4927-a3a2-4676e4cfac37",
+						"type": "text/javascript",
+						"exec": [
+							"// verification part",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response has valid JSON body\", function () {",
+							"    pm.response.to.be.withBody;",
+							"    pm.response.to.be.json;",
+							"    pm.response.to.not.have.jsonBody(\"error\");",
+							"    pm.response.to.not.have.jsonBody(\"message\");",
+							"});",
+							"",
+							"var schema = {",
+							"    \"type\" : \"array\",",
+							"    \"items\": {",
+							"        \"type\": \"object\",",
+							"        \"properties\": {",
+							"            \"id\": {",
+							"                \"type\": \"string\"",
+							"            },",
+							"            \"name\": {",
+							"                \"type\": \"string\"",
+							"            }",
+							"        }",
+							"    },",
+							"    \"required\": [",
+							"        \"id\", ",
+							"        \"name\"",
+							"    ]",
+							"};",
+							"",
+							"pm.test('Schema is valid', function() {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(tv4.validate(jsonData, schema)).to.be.true;",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{apiKey}}",
+						"description": "The API Key for using EPNomad"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{baseUrl}}/projects",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"projects"
+					]
+				},
+				"description": "Lists the current project associated with a user."
+			},
+			"response": []
+		},
+		{
+			"name": "Create new project",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ba9f486f-8859-4495-9952-8eab39b2bc22",
+						"type": "text/javascript",
+						"exec": [
+							"// verification part",
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Response has valid JSON body\", function () {",
+							"    pm.response.to.be.withBody;",
+							"    pm.response.to.be.json;",
+							"    pm.response.to.not.have.jsonBody(\"error\");",
+							"    pm.response.to.not.have.jsonBody(\"message\");",
+							"});",
+							"",
+							"var schema = {",
+							"    \"type\" : \"object\",",
+							"    \"items\": {",
+							"        \"type\": \"object\",",
+							"        \"properties\": {",
+							"            \"id\": {",
+							"                \"type\": \"string\"",
+							"            }",
+							"        }",
+							"    },",
+							"    \"required\": [",
+							"        \"id\"",
+							"    ]",
+							"};",
+							"",
+							"pm.test('Schema is valid', function() {",
+							"  var jsonData = pm.response.json();",
+							"  pm.expect(tv4.validate(jsonData, schema)).to.be.true;",
+							"});",
+							"",
+							"// modification part",
+							"var jsonData = pm.response.json();",
+							"pm.environment.set(\"projectId\", jsonData.id);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{apiKey}}",
+						"description": "The API Key for using EPNomad"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"<project name>\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/projects",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"projects"
+					]
+				},
+				"description": "Creates a new project."
+			},
+			"response": []
+		},
+		{
+			"name": "Get project info",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8061c895-ac51-4306-b8d2-410dc881f128",
+						"type": "text/javascript",
+						"exec": [
+							"// verification part",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response has valid JSON body\", function () {",
+							"    pm.response.to.be.withBody;",
+							"    pm.response.to.be.json;",
+							"    pm.response.to.not.have.jsonBody(\"error\");",
+							"    pm.response.to.not.have.jsonBody(\"message\");",
+							"});",
+							"",
+							"var schema = {",
+							"    \"type\" : \"object\",",
+							"    \"items\": {",
+							"        \"type\": \"object\",",
+							"        \"properties\": {",
+							"            \"id\": {",
+							"                \"type\": \"string\"",
+							"            },",
+							"            \"name\": {",
+							"                \"type\": \"string\"",
+							"            }",
+							"        }",
+							"    },",
+							"    \"required\": [",
+							"        \"id\",",
+							"        \"name\"",
+							"    ]",
+							"};",
+							"",
+							"pm.test('Schema is valid', function() {",
+							"  var jsonData = pm.response.json();",
+							"  pm.expect(tv4.validate(jsonData, schema)).to.be.true;",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{apiKey}}",
+						"description": "The API Key for using EPNomad"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{baseUrl}}/projects/{{projectId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"projects",
+						"{{projectId}}"
+					]
+				},
+				"description": "Retrieves the information of a specified project."
+			},
+			"response": []
+		},
+		{
+			"name": "Rename project",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1bd40640-4d87-402e-bce5-77915f72ea2a",
+						"type": "text/javascript",
+						"exec": [
+							"// verification part",
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});",
+							"",
+							"pm.test(\"Response has no body\", function () {",
+							"    pm.response.to.not.be.withBody;",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{apiKey}}",
+						"description": "The API Key for using EPNomad"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"<new project name>\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/projects/{{projectId}}/rename",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"projects",
+						"{{projectId}}",
+						"rename"
+					]
+				},
+				"description": "Renames an existing project."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete project",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f7aed6a9-2821-4088-8fb9-175517121390",
+						"type": "text/javascript",
+						"exec": [
+							"// verification part",
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});",
+							"",
+							"pm.test(\"Response has no body\", function () {",
+							"    pm.response.to.not.be.withBody;",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{apiKey}}",
+						"description": "The API Key for using EPNomad"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{baseUrl}}/projects/{{projectId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"projects",
+						"{{projectId}}"
+					]
+				},
+				"description": "Deletes an existing project."
+			},
+			"response": []
+		},
+		{
+			"name": "List products",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "22dc6c48-a7da-43c6-b3e0-46562495b0e2",
+						"type": "text/javascript",
+						"exec": [
+							"// verification part",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response has valid JSON body\", function () {",
+							"    pm.response.to.be.withBody;",
+							"    pm.response.to.be.json;",
+							"    pm.response.to.not.have.jsonBody(\"error\");",
+							"    pm.response.to.not.have.jsonBody(\"message\");",
+							"});",
+							"",
+							"var schema = {",
+							"    \"type\" : \"array\",",
+							"    \"uniqueItems\": true, ",
+							"    \"items\": {",
+							"        \"type\": \"object\", ",
+							"        \"properties\": {",
+							"            \"id\": {",
+							"                \"type\": \"string\"",
+							"            }, ",
+							"            \"name\": {",
+							"                \"type\": \"string\"",
+							"            }",
+							"        }, ",
+							"        \"required\": [",
+							"            \"id\", ",
+							"            \"name\"",
+							"        ]",
+							"    }",
+							"};",
+							"",
+							"pm.test('Schema is valid', function() {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(tv4.validate(jsonData, schema)).to.be.true;",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{apiKey}}",
+						"description": "The API Key for using EPNomad"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{baseUrl}}/projects/{{projectId}}/products",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"projects",
+						"{{projectId}}",
+						"products"
+					]
+				},
+				"description": "Lists the products associated with a project."
+			},
+			"response": []
+		},
+		{
+			"name": "Create new product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5ac26da4-7b5c-40c5-afec-fd8e231671cf",
+						"type": "text/javascript",
+						"exec": [
+							"// verification part",
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Response has valid JSON body\", function () {",
+							"    pm.response.to.be.withBody;",
+							"    pm.response.to.be.json;",
+							"    pm.response.to.not.have.jsonBody(\"error\");",
+							"    pm.response.to.not.have.jsonBody(\"message\");",
+							"});",
+							"",
+							"var schema = {",
+							"    \"type\" : \"object\",",
+							"    \"items\": {",
+							"        \"type\": \"object\",",
+							"        \"properties\": {",
+							"            \"id\": {",
+							"                \"type\": \"string\"",
+							"            }",
+							"        }",
+							"    },",
+							"    \"required\": [",
+							"        \"id\"",
+							"    ]",
+							"};",
+							"",
+							"pm.test('Schema is valid', function() {",
+							"  var jsonData = pm.response.json();",
+							"  pm.expect(tv4.validate(jsonData, schema)).to.be.true;",
+							"});",
+							"",
+							"// modification part",
+							"var jsonData = pm.response.json();",
+							"pm.environment.set(\"productId\", jsonData.id);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{apiKey}}",
+						"description": "The API Key for using EPNomad"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"<product name>!!\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/projects/{{projectId}}/products",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"projects",
+						"{{projectId}}",
+						"products"
+					]
+				},
+				"description": "Creates a new product."
+			},
+			"response": []
+		},
+		{
+			"name": "Get product info",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "622de9d8-a569-47c4-b316-2d65dfdd8ff9",
+						"type": "text/javascript",
+						"exec": [
+							"// verification part",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response has valid JSON body\", function () {",
+							"    pm.response.to.be.withBody;",
+							"    pm.response.to.be.json;",
+							"    pm.response.to.not.have.jsonBody(\"error\");",
+							"    pm.response.to.not.have.jsonBody(\"message\");",
+							"});",
+							"",
+							"var schema = {",
+							"    \"type\" : \"object\",",
+							"    \"properties\": {",
+							"        \"id\": {",
+							"            \"type\": \"string\"",
+							"        }, ",
+							"        \"name\": {",
+							"            \"type\": \"string\"",
+							"        }, ",
+							"        \"foreground\": {",
+							"            \"type\": \"array\", ",
+							"            \"uniqueItems\": true",
+							"        }, ",
+							"        \"background\": {",
+							"            \"type\": \"array\", ",
+							"            \"uniqueItems\": true",
+							"        }",
+							"    }, ",
+							"    \"required\": [",
+							"        \"id\", ",
+							"        \"name\", ",
+							"        \"foreground\", ",
+							"        \"background\"",
+							"    ]",
+							"};",
+							"",
+							"pm.test('Schema is valid', function() {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(tv4.validate(jsonData, schema)).to.be.true;",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{apiKey}}",
+						"description": "The API Key for using EPNomad"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{baseUrl}}/projects/{{projectId}}/products/{{productId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"projects",
+						"{{projectId}}",
+						"products",
+						"{{productId}}"
+					]
+				},
+				"description": "Retrieves the information of a specified product."
+			},
+			"response": []
+		},
+		{
+			"name": "Rename product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "83db0f22-e560-49a7-8565-0ade77d4f856",
+						"type": "text/javascript",
+						"exec": [
+							"// verification part",
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});",
+							"",
+							"pm.test(\"Response has no body\", function () {",
+							"    pm.response.to.not.be.withBody;",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{apiKey}}",
+						"description": "The API Key for using EPNomad"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"<new product name>\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/projects/{{projectId}}/products/{{productId}}/rename",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"projects",
+						"{{projectId}}",
+						"products",
+						"{{productId}}",
+						"rename"
+					]
+				},
+				"description": "Retrieves the information of a specified product."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "96575b77-5340-464d-937b-999d8df9a02e",
+						"type": "text/javascript",
+						"exec": [
+							"// verification part",
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});",
+							"",
+							"pm.test(\"Response has no body\", function () {",
+							"    pm.response.to.not.be.withBody;",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{apiKey}}",
+						"description": "The API Key for using EPNomad"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{baseUrl}}/projects/{{projectId}}/products/{{productId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"projects",
+						"{{projectId}}",
+						"products",
+						"{{productId}}"
+					]
+				},
+				"description": "Deletes an existing product."
+			},
+			"response": []
+		},
+		{
+			"name": "Upload training images",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1ab300ee-61f0-4984-80de-3ba945836cf4",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{apiKey}}",
+						"description": "The API Key for using EPNomad"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "foreground",
+							"value": "",
+							"description": "The product images.",
+							"type": "file"
+						},
+						{
+							"key": "background",
+							"value": "",
+							"description": "Extra background images.",
+							"type": "file"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/projects/{{projectId}}/products/{{productId}}/files",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"projects",
+						"{{projectId}}",
+						"products",
+						"{{productId}}",
+						"files"
+					]
+				},
+				"description": "Uploads the training images for a product."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete training images",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "19cc11b4-f997-4170-b742-cebad33eeed3",
+						"type": "text/javascript",
+						"exec": [
+							"// verification part",
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});",
+							"",
+							"pm.test(\"Response has no body\", function () {",
+							"    pm.response.to.not.be.withBody;",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{apiKey}}",
+						"description": "The API Key for using EPNomad"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{baseUrl}}/projects/{{projectId}}/products/{{productId}}/files",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"projects",
+						"{{projectId}}",
+						"products",
+						"{{productId}}",
+						"files"
+					]
+				},
+				"description": "Uploads the training images for a product."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "8bae115f-a85f-4004-b7b6-1015056015d7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "22808318-635b-44e8-92b6-5aea3dde1d27",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
