@@ -38,16 +38,16 @@ let FLIP_STATE = { NONE: 0, FLIP: 1, FLOP: 2 };
 let preProductDefaultOpts = {
   rotation: true,
   size: true,
-  flip: false,
+  flip: true,
   bgColor: 'white'
 };
 
 let postOverlayDefaultOpts = {
-  brightness: false,
-  saturation: false,
-  noise: false,
+  brightness: true,
+  saturation: true,
+  noise: true,
   flip: false
-}
+};
 
 let randomBool = () => Math.random() >= 0.5;
 
@@ -142,12 +142,12 @@ let parseColorGM = color => `rgb(${parseColor(color).join(',')})`;
 async function prepProductImages(allowedOps = preProductDefOpts) {
   let configs = await generateProductImgOptions(prodRawImagesPath, allowedOps)
   for (let cfg of configs) {
-    let gmTask = gm(prodRawImagesPath + img)
+    let gmTask = gm(prodRawImagesPath + cfg.productImg)
       .removeBackground(parseColorGM(cfg.bgColor), 20) // 20% fuzzy distance from specified color for removing background
       .toPNG();
     try {
-      await gmTask.writeAsync(prodConvertedImagesPath + changeExt(img, 'png'));
-      console.log(`Product image ${changeExt(img, 'png')} is ready!`);
+      await gmTask.writeAsync(prodConvertedImagesPath + changeExt(cfg.productImg, 'png'));
+      console.log(`Product image ${changeExt(cfg.productImg, 'png')} is ready!`);
     } catch (error) {
       console.log(error)
     }
@@ -168,7 +168,7 @@ async function prepBackgroundImages() {
       .maxDimensions(1024, 1024)
       .toPNG();
     try {
-      await gmTask.writeAsync(bgConvertedImagesPath + changeExt(img, 'png'));
+      await gmTaskOriginal.writeAsync(bgConvertedImagesPath + changeExt(img, 'png'));
       console.log(`Background image ${changeExt(img, 'png')} is ready!`);
     } catch (error) {
       console.log(error)
@@ -186,7 +186,7 @@ async function overlayImages(options = postOverlayDefOpts) {
       let outFilePath = finalPath + `${parseInt(process.uptime()*1000)}.png`;
       gm(bgConvertedImagesPath + bgImg)
         .composite(prodConvertedImagesPath + prodImg)
-        .translate(randomInt(0,400), randomInt(0,400))
+
         .write(
           outFilePath,
           error => defErrorHandler(error, () => console.log(/*`Final image ${i++}.png is ready!`*/outFilePath))
@@ -257,7 +257,14 @@ async function convert() {
         bgRawImagesPath
       )).length
     )
+    //await generateBackgroundImgOptions(bgRawImagesPath);
+    //await generateProductImgOptions(prodRawImagesPath);
+
+    //await prepProductImages(preProductDefaultOpts);
+  //  await prepBackgroundImages();
+    await overlayImages(postOverlayDefaultOpts);
   } catch (error) {
+    console.log("working");
     console.log(error);
   }
 })();
