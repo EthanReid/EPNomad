@@ -38,16 +38,16 @@ let FLIP_STATE = { NONE: 0, FLIP: 1, FLOP: 2 };
 let preProductDefaultOpts = {
   rotation: true,
   size: true,
-  flip: true,
+  flip: false,
   bgColor: 'white'
 };
 
 let postOverlayDefaultOpts = {
-  brightness: true,
-  saturation: true,
-  noise: true,
+  brightness: false,
+  saturation: false,
+  noise: false,
   flip: false
-};
+}
 
 let randomBool = () => Math.random() >= 0.5;
 
@@ -147,7 +147,7 @@ async function prepProductImages(allowedOps = preProductDefOpts) {
       .toPNG();
     try {
       await gmTask.writeAsync(prodConvertedImagesPath + changeExt(cfg.productImg, 'png'));
-      console.log(`Product image ${changeExt(cfg.productImg, 'png')} is ready!`);
+      console.log(`Product image ${changeExt(img, 'png')} is ready!`);
     } catch (error) {
       console.log(error)
     }
@@ -261,10 +261,10 @@ async function convert() {
     //await generateProductImgOptions(prodRawImagesPath);
 
     //await prepProductImages(preProductDefaultOpts);
-  //  await prepBackgroundImages();
+    //await prepBackgroundImages();
     await overlayImages(postOverlayDefaultOpts);
   } catch (error) {
-    console.log("working");
+    console.log("fudge");
     console.log(error);
   }
 })();
